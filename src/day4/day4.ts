@@ -1,6 +1,8 @@
 import {readFileSync} from 'fs';
 import {parsePassport} from "./parse-passport";
-import {isValidPassword} from "./is-valid-password";
+import {allMandatoryFieldsPresent} from "./all-mandatory-fields-present";
+import {allFieldsValid} from "./all-fields-valid";
 
 const input = readFileSync(__dirname + '/input.txt').toString();
-console.log(parsePassport(input).filter(isValidPassword).length)
+console.log(parsePassport(input).filter(allMandatoryFieldsPresent).length)
+console.log(parsePassport(input).filter(allFieldsValid).length)

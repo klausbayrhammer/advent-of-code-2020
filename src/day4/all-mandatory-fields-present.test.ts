@@ -1,8 +1,8 @@
-import {isValidPassword} from './is-valid-password';
+import {allMandatoryFieldsPresent} from './all-mandatory-fields-present';
 
 const createValidPassport = () => ({ecl: 'gry', pid: '860033327', eyr: '2020', hcl: '#fffffd', byr: '1937', iyr: '2017', hgt: '183cm'});
 it('returns true for valid passwords', function () {
-    expect(isValidPassword(createValidPassport())).toEqual(true);
+    expect(allMandatoryFieldsPresent(createValidPassport())).toEqual(true);
 });
 
 
@@ -10,7 +10,7 @@ it('returns true for valid passwords', function () {
     it(`returns false for passwords without ${property}`, () => {
         const invalidPassport = createValidPassport();
         delete invalidPassport[property];
-        expect(isValidPassword(invalidPassport)).toEqual(false);
+        expect(allMandatoryFieldsPresent(invalidPassport)).toEqual(false);
 
     })
 })
